@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\ContactController::class, 'index']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\ContactController::class, 'index'])->name('home');
 
-Route::resource('contacts', App\Http\Controllers\ContactController::class);
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('contacts', App\Http\Controllers\ContactController::class);
+});
