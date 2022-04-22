@@ -5,8 +5,14 @@ composer install
 ```
 copy the .env.example file to a .env file, and set the database config
 
-
 ## execute
+```
+php artisan key:generate
+
+```
+
+
+## than execute
 ```
 npm install
 
